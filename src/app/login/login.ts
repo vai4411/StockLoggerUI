@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterOutlet, FormsModule],
+  imports: [FormsModule],
   templateUrl: './login.html',
   styleUrls: ['./login.scss']
 })

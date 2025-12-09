@@ -47,8 +47,17 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+
+              // ✅ FIX: Disable critical CSS inlining
+              "optimization": {
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              }
             },
+
             "development": {
               "optimization": false,
               "extractLicenses": false,

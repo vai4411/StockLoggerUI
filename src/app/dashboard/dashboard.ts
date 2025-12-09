@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Default, FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
