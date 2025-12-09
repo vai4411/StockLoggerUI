@@ -48,8 +48,6 @@
                 }
               ],
               "outputHashing": "all",
-
-              // ✅ FIX: Disable critical CSS inlining
               "optimization": {
                 "styles": {
                   "minify": true,
