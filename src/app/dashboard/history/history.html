@@ -1,0 +1,47 @@
+<h2>Stock History</h2>
+
+<!-- Search box -->
+<div class="search-container">
+  <input type="text" [(ngModel)]="searchText" placeholder="Enter stock name">
+  <button (click)="search()">Find</button>
+  <button (click)="resetSearch()">Reset</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Stock Name</th>
+      <th>Buy Price</th>
+      <th>Sell Price</th>
+      <th>Buy Date</th>
+      <th>Sell Date</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of displayedList">
+      <td>{{ item.id }}</td>
+      <td>{{ item.stock_name }}</td>
+      <td>{{ item.buy_price }}</td>
+      <td>{{ item.sell_price || '—' }}</td>
+      <td>{{ item.buy_date }}</td>
+      <td>{{ item.sell_date || '—' }}</td>
+      <td>{{ item.quantity }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Pagination Controls -->
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">Prev</button>
+
+  <button *ngFor="let page of [].constructor(totalPages); let i = index"
+          (click)="goToPage(i + 1)"
+          [class.active]="currentPage === (i + 1)">
+    {{ i + 1 }}
+  </button>
+
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>

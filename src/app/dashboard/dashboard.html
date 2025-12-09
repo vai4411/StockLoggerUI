@@ -1,0 +1,49 @@
+<div class="container">
+  <form #actionForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button type="button" class="action-btn insert" (click)="insert()">Insert</button>
+      <button type="button" class="action-btn update" (click)="update()">Update</button>
+      <button type="button" class="action-btn history" (click)="history()">History</button>
+    </div>
+
+    <!-- Summary Section -->
+    <div class="data-box">
+      <div class="item">
+        <label>Days :</label>
+        <span>{{ data?.days }}</span>
+      </div>
+
+      <div class="item">
+        <label>Profit :</label>
+        <span>{{ data?.profit }}</span>
+      </div>
+    </div>
+    <!-- Active Positions Table -->
+    <div class="active-positions">
+      <h3>Active Positions</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Stock Name</th>
+            <th>Invested Amount</th>
+            <th>Total Quantity</th>
+            <th>Avg Price</th>
+            <th>Days</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let position of data.activePositions">
+            <td>{{ position.stock_name }}</td>
+            <td>{{ position.invested_amount * position.total_quantity }}</td>
+            <td>{{ position.total_quantity }}</td>
+            <td>{{ position.avg_price / position.days * position.total_quantity }}</td>
+            <td>{{ position.days }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </form>
+</div>

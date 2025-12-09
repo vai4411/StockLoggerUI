@@ -1,0 +1,18 @@
+<div class="login-wrapper">
+  <div class="login-box">
+
+    <h1>Login</h1>
+
+    <div class="input-group">
+      <label>Username</label>
+      <input type="text" [(ngModel)]="username" placeholder="Enter username">
+    </div>
+
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" [(ngModel)]="password" placeholder="Enter password">
+    </div>
+
+    <button class="btn" (click)="onLogin()">Sign In</button>
+  </div>
+</div>

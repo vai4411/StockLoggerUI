@@ -1,0 +1,65 @@
+<form (ngSubmit)="onSubmit()" #stockForm="ngForm">
+  <label class="insert">Insert</label>
+
+  <!-- STOCK NAME DROPDOWN WITH SEARCH -->
+  <label>Stock Name</label>
+
+  <!-- Search bar -->
+  <!-- <input type="text" 
+         placeholder="Search stock..."
+         [(ngModel)]="searchText"
+         name="searchStock"
+         class="search-input" />
+
+  <!-- Dropdown 
+   <select name="stock_name"
+          [(ngModel)]="stock.stock_name"
+          required
+          class="search-input">
+
+    <option *ngFor="let s of filteredStocks()" [value]="s">
+      {{ s }}
+    </option>
+  </select> --> 
+
+  <div class="combo-box">
+  
+  <!-- Textbox -->
+  <input type="text"
+         placeholder="Search stock..."
+         [(ngModel)]="searchText"
+         (focus)="showDropdown = true"
+         (input)="showDropdown = true"
+         name="stock_name"
+         required />
+
+  <!-- Dropdown (shows only when typing) -->
+  <ul *ngIf="showDropdown && searchText.length >= 3" class="dropdown">
+    <li *ngFor="let s of filteredStocks()"
+        (click)="selectStock(s)">
+      {{ s }}
+    </li>
+
+    <li *ngIf="filteredStocks().length === 0" class="no-data">
+      No match found
+    </li>
+  </ul>
+</div>
+
+
+  <label>Buy Price</label>
+  <input type="number"
+         name="buy_price"
+         [(ngModel)]="stock.buy_price"
+         required />
+
+  <label>Quantity</label>
+  <input type="number"
+         name="quantity"
+         [(ngModel)]="stock.quantity"
+         step="1"
+         min="0"
+         required />
+
+  <button type="submit">Submit</button>
+</form>
