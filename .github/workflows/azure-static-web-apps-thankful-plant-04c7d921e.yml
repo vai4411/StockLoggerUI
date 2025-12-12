@@ -42,8 +42,9 @@ jobs:
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_THANKFUL_STONE_0E8C8401E }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_THANKFUL_PLANT_04C7D921E }}
           action: "upload"
           app_location: "/"               # root of repo, since build outputs to dist/web-admin
           api_location: ""                # if you have an API, set path here
           output_location: "dist/web-admin"  # output folder from Angular build
+
