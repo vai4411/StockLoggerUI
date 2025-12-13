@@ -23,25 +23,30 @@ jobs:
           node-version: '20.x'
 
       # 3️⃣ Install dependencies
-      - run: npm ci
+      - name: Install npm dependencies
+        run: npm ci
 
       # 4️⃣ Optional: Debug repo structure
-      - run: |
+      - name: Debug repo structure
+        run: |
           pwd
           ls -R
 
       # 5️⃣ Build Angular app
-      - run: npm run build
+      - name: Build Angular app
+        run: npm run build -- --configuration production
 
       # 6️⃣ Optional: Check build output
-      - run: ls -R dist/web-admin
+      - name: List dist folder
+        run: ls -R dist/web-admin
 
       # 7️⃣ Deploy to Azure Static Web App
-      - uses: Azure/static-web-apps-deploy@v1
+      - name: Deploy to Azure SWA
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLUE_ROCK_0C226091E }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
-          app_location: "/"                 # Angular app root folder
-          output_location: "dist/web-admin" # Must match angular.json outputPath
-          api_location: ""                  # leave empty if no API
+          app_location: "."                          # repo root
+          output_location: "dist/web-admin/browser"  # Angular build output
+          api_location: ""                           # leave empty if no API
