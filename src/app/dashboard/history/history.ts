@@ -19,7 +19,7 @@ export class History {
   searchText: string = '';
 
   currentPage = 1;
-  itemsPerPage = 10;
+  itemsPerPage = 2;
   totalPages = 1;
 
 ngOnInit() {

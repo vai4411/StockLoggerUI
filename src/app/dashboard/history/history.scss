@@ -1,3 +1,20 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #ACB6E5); /* Replace with your desired color or gradient */
+}
+
+/* Center everything vertically and horizontally if needed */
+.login-wrapper {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Base styles */
 h2 {
   text-align: center;
   margin-bottom: 20px;
@@ -83,4 +100,77 @@ tbody tr:last-child td {
 
 .search-container button:hover {
   background: #0056b3;
+}
+
+/* ======================= */
+/* Mobile / Responsive     */
+/* ======================= */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  tbody tr {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    background: #fff;
+  }
+
+  td {
+    text-align: right;
+    padding: 8px 10px;
+    position: relative;
+    font-size: 0.9rem;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 50%;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .search-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .pagination button {
+    flex: 1 1 40px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  td::before {
+    font-size: 0.8rem;
+  }
+
+  td {
+    font-size: 0.8rem;
+    padding: 6px 8px;
+  }
+
+  .search-container input,
+  .search-container button {
+    width: 100%;
+  }
 }

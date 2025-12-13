@@ -6,21 +6,26 @@
   align-items: center;
   background: linear-gradient(135deg, #74ebd5, #ACB6E5);
   font-family: Arial, sans-serif;
+  padding: 10px; /* prevent overflow on small screens */
+  box-sizing: border-box;
 }
 
 /* Login box */
 .login-box {
   width: 320px;
+  max-width: 100%; /* allow shrinking on mobile */
   padding: 30px;
   background: #ffffffdd;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
+  box-sizing: border-box;
 }
 
 .login-box h1 {
   text-align: center;
   margin-bottom: 25px;
+  font-size: 1.5rem; /* scales better on mobile */
 }
 
 /* Input fields */
@@ -32,8 +37,8 @@
 
 .input-group label {
   margin-bottom: 5px;
-  // font-size: 14px;
   font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .input-group input {
@@ -56,11 +61,53 @@
   color: #fff;
   border: none;
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
   transition: 0.2s;
 }
 
 .btn:hover {
   background: #0056cc;
+}
+
+/* ============================= */
+/* Mobile responsiveness tweaks   */
+/* ============================= */
+@media (max-width: 480px) {
+  .login-box {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .login-box h1 {
+    font-size: 1.3rem;
+  }
+
+  .input-group input {
+    padding: 8px;
+  }
+
+  .btn {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .login-box {
+    padding: 15px;
+  }
+
+  .login-box h1 {
+    font-size: 1.1rem;
+  }
+
+  .input-group input {
+    padding: 6px;
+  }
+
+  .btn {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
 }
