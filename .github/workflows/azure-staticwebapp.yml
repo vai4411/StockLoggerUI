@@ -52,4 +52,4 @@ jobs:
           app_location: "/"                          # Angular app root folder
           output_location: "dist/web-admin"  # Angular 20+ build output
           api_location: ""                           # leave empty if no API
-          app_build_command: "npm install && npm run build --configuration production"
+          app_build_command: "npm install && npm run build"
