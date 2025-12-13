@@ -28,7 +28,7 @@
               }
             ],
             "styles": ["src/styles.scss"],
-            "outputPath": "dist/web-admin"
+            "outputPath": "dist/web-admin/browser"
           },
           "configurations": {
             "production": {
