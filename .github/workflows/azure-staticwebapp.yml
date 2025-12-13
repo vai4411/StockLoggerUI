@@ -31,7 +31,9 @@ jobs:
           ls -R
 
       # 5️⃣ Build Angular app
-      - run: npm run build
+      - name: Build Angular app
+        run: npm run build -- --configuration production
+        working-directory: app/web-admin
 
       # 6️⃣ Optional: Check build output
       - run: ls -R dist/web-admin
