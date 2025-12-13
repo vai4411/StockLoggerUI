@@ -43,5 +43,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
           app_location: "/"                 # Angular app root folder
-          output_location: "dist/web-admin" # Must match angular.json outputPath
+          output_location: "dist/web-admin/browser" # Must match angular.json outputPath
           api_location: ""                  # leave empty if no API
