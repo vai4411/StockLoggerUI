@@ -5,7 +5,6 @@ on:
     branches:
       - main
   pull_request:
-    types: [opened, synchronize, reopened, closed]
     branches:
       - main
 
@@ -14,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Angular 20 App
     steps:
-      # 1️⃣ Checkout the repository
+      # 1️⃣ Checkout repository
       - uses: actions/checkout@v3
 
       # 2️⃣ Setup Node.js
@@ -22,28 +21,33 @@ jobs:
         with:
           node-version: '20.x'
 
-      # 3️⃣ Install dependencies
-      - run: npm ci
+      # 3️⃣ Install dependencies in the correct folder
+      - name: Install npm dependencies
+        run: npm ci
+        working-directory: app/web-admin
 
       # 4️⃣ Optional: Debug repo structure
-      - run: |
+      - name: Debug repo structure
+        run: |
           pwd
           ls -R
 
       # 5️⃣ Build Angular app
       - name: Build Angular app
         run: npm run build -- --configuration production
-        working-directory: web-admin
+        working-directory: app/web-admin
 
       # 6️⃣ Optional: Check build output
-      - run: ls -R dist/web-admin
+      - name: List dist folder
+        run: ls -R app/web-admin/dist/web-admin/browser
 
       # 7️⃣ Deploy to Azure Static Web App
-      - uses: Azure/static-web-apps-deploy@v1
+      - name: Deploy to Azure SWA
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLUE_ROCK_0C226091E }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
-          working-directory: app/web-admin
-          app_location: "app/web-admin"
-          output_location: "app/web-admin/dist/web-admin/browser"
+          app_location: "app/web-admin"                          # Angular project folder
+          output_location: "app/web-admin/dist/web-admin/browser" # folder containing index.html
+          api_location: ""                                       # leave empty if no API
