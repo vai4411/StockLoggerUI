@@ -28,7 +28,7 @@
               }
             ],
             "styles": ["src/styles.scss"],
-            output_location: "dist/web-admin/browser"
+            output_location: "dist/web-admin"
           },
           "configurations": {
             "production": {
