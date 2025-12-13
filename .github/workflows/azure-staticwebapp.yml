@@ -44,6 +44,6 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLUE_ROCK_0C226091E }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
-          app_location: "web-admin"             # Angular project folder
-          output_location: "web-admin/dist/web-admin/browser" # build folder relative to repo root
-          api_location: ""                # leave empty if no API
+          working-directory: app/web-admin
+          app_location: "app/web-admin"
+          output_location: "app/web-admin/dist/web-admin/browser"
