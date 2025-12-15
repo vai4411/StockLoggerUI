@@ -29,16 +29,27 @@ ngOnInit() {
   constructor(private infoService: InfoService){}
 
   loadHistory() {
-    console.log(this.searchText);
-    this.infoService.History(this.searchText).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.historyList = res.data;
-        this.totalPages = Math.ceil(this.historyList.length / this.itemsPerPage);
-        this.updatePage();
-      },
-      error: (err) => console.error(err)
-    });
+    const history = localStorage.getItem('history');
+
+    if (history != null) {
+      console.log('inside cache');
+      this.historyList = JSON.parse(history);
+      this.totalPages = Math.ceil(this.historyList.length / this.itemsPerPage);
+      this.updatePage();
+    }
+    else{
+      console.log(this.searchText);
+      this.infoService.History(this.searchText).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.historyList = res.data;
+          this.totalPages = Math.ceil(this.historyList.length / this.itemsPerPage);
+          this.updatePage();
+          localStorage.setItem('history', JSON.stringify(res.data));
+        },
+        error: (err) => console.error(err)
+      });
+    }
   }
 
   search() {

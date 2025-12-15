@@ -22,17 +22,20 @@ export class Dashboard implements OnInit {
   }
 
   loadInfo() {
-    this.infoService.Info().subscribe({
-      next: (response: InfoResponse) => {
-        if (response.returnCode === "0") {
-          this.data = response.data;
-          console.log(response.data);
+    const cachedInfo = localStorage.getItem('info');
+
+    if (cachedInfo != null) {
+      this.data = JSON.parse(cachedInfo);
+    } else {
+      this.infoService.Info().subscribe({
+        next: (response: InfoResponse) => {
+          if (response.returnCode === '0') {
+            this.data = response.data;
+            localStorage.setItem('info', JSON.stringify(response.data));
+          }
         }
-      },
-      error: (err) => {
-        console.error('Error fetching API:', err);
-      }
-    });
+      });
+    }
   }
 
   insert() {

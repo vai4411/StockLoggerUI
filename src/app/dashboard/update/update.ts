@@ -42,6 +42,7 @@ onSubmit() {
       next: (res) => {
         console.log("Update successful:", res);
         alert("Stock Updated successfully!");
+        localStorage.clear();
       },
       error: (err) => {
         console.error("Update failed:", err);

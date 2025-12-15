@@ -45,6 +45,7 @@ stock: Stock = {
       next: (res) => {
         console.log("Insert successful:", res);
         alert("Stock inserted successfully!");
+        localStorage.clear();
       },
       error: (err) => {
         console.error("Insert failed:", err);

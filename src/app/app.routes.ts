@@ -7,13 +7,14 @@ import { Update } from './dashboard/update/update';
 import { History } from './dashboard/history/history';
 
 export const routes: Routes = [
-  { path: '', 
-    redirectTo: 'login', 
-    pathMatch: 'full' 
+ {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
     path: 'login',
-    component: Login         
+    component: Login
   },
   {
     path: 'home',
@@ -21,18 +22,18 @@ export const routes: Routes = [
   },
   {
     path: 'insert',
-    component: Insert         
+    component: Insert
   },
   {
     path: 'update',
-    component: Update         
+    component: Update
   },
   {
     path: 'history',
-    component: History         
+    component: History
   },
   {
     path: '**',
-    redirectTo:'login'        
+    redirectTo: 'login'
   }
 ];
