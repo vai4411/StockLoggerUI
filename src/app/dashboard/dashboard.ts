@@ -16,8 +16,8 @@ export class Dashboard implements OnInit {
 
   constructor(private infoService: InfoService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.loadInfo();
+  async ngOnInit() {
+    await this.loadInfo();
     console.log('on init');
   }
 
