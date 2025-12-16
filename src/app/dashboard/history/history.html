@@ -26,8 +26,8 @@
       <td>{{ item.stock_name }}</td>
       <td>{{ item.buy_price }}</td>
       <td>{{ item.sell_price || '—' }}</td>
-      <td>{{ item.buy_date }}</td>
-      <td>{{ item.sell_date || '—' }}</td>
+      <td>{{ item.buy_date | date:'dd/MM/yyyy' }}</td>
+      <td>{{ item.sell_date ? (item.sell_date | date:'dd/MM/yyyy') : '—' }}</td>
       <td>{{ item.quantity }}</td>
     </tr>
   </tbody>
