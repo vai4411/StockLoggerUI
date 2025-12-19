@@ -53,10 +53,12 @@ ngOnInit() {
   }
 
   search() {
+    localStorage.clear();
     this.loadHistory();
   }
 
   resetSearch(){
+    localStorage.clear();
     this.searchText = '';
     this.loadHistory();
   }
