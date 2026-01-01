@@ -19,6 +19,7 @@ export class Dashboard implements OnInit {
   async ngOnInit() {
     await this.loadInfo();
     console.log('on init');
+    await this.sync();
   }
 
   loadInfo() {
@@ -36,6 +37,20 @@ export class Dashboard implements OnInit {
         }
       });
     }
+  }
+
+  sync(){
+    this.infoService.Sync().subscribe({
+      next: (res) => {
+        console.log("Sync successful:", res);
+        alert("Sync successful!");
+        localStorage.clear();
+      },
+      error: (err) => {
+        console.error("Insert failed:", err);
+        alert("Sync Unsuccessful:");
+      }
+    });
   }
 
   insert() {
