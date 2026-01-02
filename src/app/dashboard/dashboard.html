@@ -13,12 +13,17 @@
     <div class="data-box">
       <div class="item">
         <label>Days :</label>
-        <span>{{ data?.days }}</span>
+        <span>{{ data?.days | number:'1.2-2' }}</span>
       </div>
 
       <div class="item">
         <label>Profit :</label>
-        <span>{{ data?.profit }}</span>
+        <span>{{ data?.profit | number:'1.2-2' }}</span>
+      </div>
+
+      <div class="item">
+        <label>Average :</label>
+        <span>{{ data?.profit / data?.days | number:'1.2-2' }}</span>
       </div>
     </div>
     <!-- Active Positions Table -->
